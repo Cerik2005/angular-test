@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Seleccione el nro de pagina para firma</h1>
+<div mat-dialog-content>
+  <h2>1 al {{pagina}}</h2>
+  <mat-form-field class="example-form-field">
+    <input matInput type="number" #test min="1" max="{{pagina}}" value="1">
+  </mat-form-field>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="loadPDF(test.value)">Ok</button>
+</mat-dialog-actions>

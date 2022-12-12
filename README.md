@@ -1,27 +1,76 @@
+
 # AngularTest
+## Descripcion de Proyecto
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
+Como  usuario de aplicación de firma  quiero  un componente que me permita posicionar la firma visible  para  que cuando se firme finalmente el documento la representación gráfica coincida con el formato del documento seleccionado.
 
-## Development server
+**Criterios de aceptación**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+ - El primer paso consiste en seleccionar un documento en formato PDF
+   (cargar archivo).    
+ - Se debe previsualizar el documento cargado, y el  usuario sobre este documento puede agregar firmas (rectángulos)    
+ - Las  firmas agregadas deben previsualizarse, y pueden posicionarse de
+   acuerdo con las siguientes reglas:
+    - No pueden superponerse
+    - Solo pueden posicionarse en el área del documento (no pueden quedar fuera del documento).
+    - El tamaño de la firma es fijo de 130pt x 60pt (puede representarse con un rectángulo)
+    - Al presionar Botón "Firmar", El componente debe retornar finalmente un objeto JSON con la referencia al documento a firmar y las posiciones de cada firma (basta con que se despliegue por consola o pantalla el json)
 
-## Code scaffolding
+Ej:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    {    
+    "documento": "docto.pdf"    
+    "firmas": [    
+	    {    
+	    "nombre": "juan perez",    
+	    "pagina": 1,    
+	    "posX": 30    
+	    "posY": 60    
+	    },    
+	    {    
+	    "nombre": "pedro picapiedra",    
+	    "pagina": 1,    
+	    "posX": 120    
+	    "posY": 60    
+		 }    
+	    ]   
+    }
 
-## Build
+ - Considerar un documento (PDF) de 1 pagina, si se incluye que permita especificar numero de pagina se considera un plus
+-   Considerar zoom fijo del documento, de igual forma si el entregable soporta controles de zoom al documento se considera un plus.
+-   El componente debe estar desarrollado en angular (versión 2 hacia arriba) a nivel de POC, todo el posicionamiento se debe hacer del lado cliente (No se debe generar un backend).
+-   Se permite el uso de librerías externas o módulos en la medida que no requieran una licencia privativa para su uso. Por ejemplo renderizar el PDF.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Prerrequisitos
 
-## Running unit tests
+ - NodeJS 18.12.1
+ - Angular CLI: 15.0.2 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ ## Ambiente inicial de desarrollo
 
-## Running end-to-end tests
+ - Angular CLI: 15.0.2 
+ - Node: 19.01 
+ - npm 9.1.3 
+ - OS: win32   x64 
+ - Angular: 15.0.2
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ ## Comando para ejecucion de proyecto
+ ### Instalacion de dependencias
+     npm install
 
-## Further help
+ ### Ejecucion de proyecto
+     ng serve --open
+## Instalacion de dependencias
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Angular Material [https://material.angular.io/](https://material.angular.io/)
+    ng add @angular/material
+
+### PDFJS-dist [https://github.com/mozilla/pdf.js](https://github.com/mozilla/pdf.js)
+    npm i pdfjs-dist
+
+## Nota
+
+ - Se agregan funciones para edicion y eliminacion de firma especifica
+ - Se muestra json tanto en la vista como en consola
+ - Se agrega dialog para la seleccion de pagina en caso de archivos pdf superiores a 1 pagina
+ - Limite maximo para el nombre de firma 10 caracteres

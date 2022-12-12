@@ -1,0 +1,57 @@
+.stack {
+  position: relative
+}
+
+.stack canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+#firmas {
+  background: transparent;
+  z-index: 2;
+}
+
+.column {
+  float: left;
+  width: 30%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* #pdf {
+  border: 1px solid black;
+} */
+
+canvas {
+  cursor: crosshair;
+}
+
+
+td {
+  padding-right: 8px;
+}
+
+.button-row {
+  padding: 10px;
+  display: table-cell;
+  max-width: 600px;
+}
+
+.input {
+  padding: 10px;
+}
+
+.button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.mat-mdc-form-field {
+  margin-right: 10px;
+}
